@@ -1,0 +1,14 @@
+[project]
+name = "chat-with-db"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "aiomysql>=0.3.2",
+    "deepagents==0.7.0a6",
+    "fastmcp==3.4.4",
+    "langchain-deepseek==1.1.0",
+    "langchain-mcp-adapters>=0.3.0",
+    "langsmith[sandbox]>=0.9.8",
+    "opensandbox>=0.1.13",
+    "pymysql==1.2.0",
+]
