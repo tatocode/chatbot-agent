@@ -36,7 +36,7 @@ async def main():
             "opensandbox/code-interpreter:v1.1.0",
             entrypoint=["/opt/code-interpreter/code-interpreter.sh"],
             env={"PYTHON_VERSION": "3.12"},
-            timeout=timedelta(minutes=10),
+            timeout=timedelta(minutes=60),  # Note: This value will affect the agent's working time.
             connection_config=ConnectionConfigSync(api_key=os.environ.get("OPENSANDBOX_API_KEY", ""))
         )
 
@@ -59,7 +59,7 @@ async def main():
         )
 
         # If a checkpoint is used, this is a required field.
-        thread_config: RunnableConfig = {"configurable": {"thread_id": "42"}, "recursion_limit": 100}
+        thread_config: RunnableConfig = {"configurable": {"thread_id": "42"}, "recursion_limit": 1000}
 
         while True:
             query = input("> ")
@@ -91,13 +91,12 @@ async def main():
                             print(response_text, end="", flush=True)
             print("\n")
 
-
-
-
     finally:
         if 'sandbox' in locals():
-            sandbox.kill()
-            sandbox.close()
+            try:
+                sandbox.kill()
+            except Exception as e:
+                print(f"cleanup failed: {e}")
 
 
 if __name__ == '__main__':
