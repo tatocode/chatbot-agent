@@ -5,6 +5,10 @@ mysql_client = client = MultiServerMCPClient(
         "MySQL": {
             "transport": "http",
             "url": "http://localhost:8000/mcp",
+        },
+        "DuckDuckGo": {
+            "transport": "http",
+            "url": "http://localhost:7070/mcp"
         }
-    }
+    },
 )
