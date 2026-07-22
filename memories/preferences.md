@@ -1,5 +1,5 @@
 # Song References
-- 《黄昏》罗文版（专辑《戏说人生》）— 用户提到的"黄昏"，不是周传雄版
+- 
 
 # Behavioral Notes
 
